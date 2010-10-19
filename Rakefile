@@ -5,12 +5,14 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "hotwire"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
-    gem.email = "les@sunquake.net"
+    gem.summary = %Q{Under the hood data transformations for the Google Wire protocol. }
+    gem.description = %Q{Hotwire is designed to ease the pain of creating Google Wire protocol compatible data source in Ruby.}
+    gem.email = "les@codebenders.com"
     gem.homepage = "http://github.com/lesfreeman/hotwire"
     gem.authors = ["Les Freeman"]
+    gem.add_dependency "active_support", ">= 0"
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_development_dependency "redgreen", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
