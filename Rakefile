@@ -10,7 +10,7 @@ begin
     gem.email = "les@codebenders.com"
     gem.homepage = "http://github.com/lesfreeman/hotwire"
     gem.authors = ["Les Freeman"]
-    gem.add_dependency "active_support", ">= 0"
+    gem.add_dependency "activesupport", ">= 0"
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     gem.add_development_dependency "redgreen", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
