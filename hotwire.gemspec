@@ -23,7 +23,20 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
-     "lib/hotwire.rb"
+     "hotwire.gemspec",
+     "lib/hotwire.rb",
+     "lib/hotwire/active_record_mixin.rb",
+     "lib/hotwire/column_headers.rb",
+     "lib/hotwire/core_extensions.rb",
+     "lib/hotwire/data.rb",
+     "lib/hotwire/row.rb",
+     "test/active_record_test_helper.rb",
+     "test/hotwire_test.rb",
+     "test/test_active_record_mixin.rb",
+     "test/test_column_headers.rb",
+     "test/test_data.rb",
+     "test/test_helper.rb",
+     "test/test_row.rb"
   ]
   s.homepage = %q{http://github.com/lesfreeman/hotwire}
   s.rdoc_options = ["--charset=UTF-8"]
