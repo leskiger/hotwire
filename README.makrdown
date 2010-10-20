@@ -1,6 +1,6 @@
 # Hotwire
 
-Hotwire is designed to ease the pain of creating Google Wire Protocol compatible data source in Ruby.
+Hotwire is designed to ease the pain of creating Google Wire Protocol compatible data source in Ruby. Specifically, Hotwire can make it dead simple to provide data for the Google Visualization API.
 
 ## Basic Usage
 
