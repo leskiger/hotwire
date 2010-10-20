@@ -1,17 +1,17 @@
 require 'test_helper'
 
-class TestData < Test::Unit::TestCase
+class TestTable < Test::Unit::TestCase
   context "inializing from a Hash" do
     
     should "raise an ArgumentError if :columns are not specified" do
       assert_raise ArgumentError do
-        Hotwire::Data.new({:rows => []})
+        Hotwire::Table.new({:rows => []})
       end
     end
     
     should "raise an ArgumentError if :rows are not specified" do
       assert_raise ArgumentError do
-        Hotwire::Data.new({:columns => []})
+        Hotwire::Table.new({:columns => []})
       end
     end
     
@@ -20,7 +20,7 @@ class TestData < Test::Unit::TestCase
   context "a Hotwire::Date instance" do
     setup do
       time = Time.local(2010, 10, 19, 9, 38, 10)
-      @data = Hotwire::Data.new({:columns => ['started at', 'name', 'years', 'location'], :rows => [[time, "bob", 21, nil]]})
+      @data = Hotwire::Table.new({:columns => ['started at', 'name', 'years', 'location'], :rows => [[time, "bob", 21, nil]]})
     end
     
     context "to_wire" do

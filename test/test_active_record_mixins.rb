@@ -4,11 +4,11 @@ require 'active_record_test_helper'
 
 class TestActiveRecordMixin < Test::Unit::TestCase
   
-  context "a Hotwire::Data instance from an ActiveRecord collection" do
+  context "a Hotwire::Table instance from an ActiveRecord collection" do
     setup do
       Person.delete_all
       Person.create(:name => "Bob", :age => 33, :bio => "A nice Guy", :birth_date => Time.utc(2010, 10, 19, 9, 38, 10))
-      @data = Hotwire::Data.new(Person.all)
+      @data = Hotwire::Table.new(Person.all)
     end
     
     context "to_wire" do

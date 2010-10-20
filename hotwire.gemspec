@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
      "test/hotwire_test.rb",
      "test/test_active_record_mixin.rb",
      "test/test_column_headers.rb",
+     "test/test_core_extensions.rb",
      "test/test_data.rb",
      "test/test_helper.rb",
      "test/test_row.rb"
@@ -48,6 +49,7 @@ Gem::Specification.new do |s|
      "test/hotwire_test.rb",
      "test/test_active_record_mixin.rb",
      "test/test_column_headers.rb",
+     "test/test_core_extensions.rb",
      "test/test_data.rb",
      "test/test_helper.rb",
      "test/test_row.rb"

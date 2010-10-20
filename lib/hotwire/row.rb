@@ -1,14 +1,30 @@
-module Hotwire
+module Hotwire #:nodoc:
+  
+  ##
+  # Represents a one-dimensional row of data.
+  #
   class Row
+    
+    ##
+    # Construct a new Row object from a array of data.
+    #
     def initialize data
+      raise ArgumentError, "data must be an Array of values" unless data.is_a?(Array)
       @data = data
     end
   
+    ##
+    # Convert the row to a Wire compatible Hash
+    #
     def to_wire
       { 'c' => @data.map { |value| {'v' => format_value(value) } } }
     end
 
   private
+  
+    ##
+    # Perform any formatting needed to make value Wire compatible.
+    #
     def format_value value
       case value.class.name
       when /Time/
@@ -20,10 +36,10 @@ module Hotwire
       end
     end
     
+    ##
+    # Wire dates seem to expect to have 0 based month.
+    #
     def format_date value
-      #times pulled from an attribute hash are not converted to the zone automatically
-      value = value.in_time_zone if Time.respond_to?(:zone) and Time.zone and value.respond_to?(:in_time_zone)
-      #google expects a 0 based month
       "Date(#{value.year}, #{value.month - 1}, #{value.day}, #{value.hour}, #{value.min}, #{value.sec})"
     end
   end
