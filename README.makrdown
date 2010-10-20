@@ -1,0 +1,46 @@
+# Hotwire
+
+Hotwire is designed to ease the pain of creating Google Wire Protocol compatible data source in Ruby.
+
+## Basic Usage
+
+Create a data hash...
+
+    data = {:columns => ['name', 'years', 'location'], :rows => [["Bob", 21, "Baltimore"],
+                                                                 ["Fred", 11, "Pittsburgh"]]}
+
+...convert it...
+    
+    data.to_wire
+
+...and savor the results:
+    
+    {"table"=>{"rows"=>[{"c"=>[{"v"=>"Bob"}, {"v"=>21}, {"v"=>"Baltimore"}]}, {"c"=>[{"v"=>"Fred"}, {"v"=>11}, {"v"=>"Pittsburgh"}]}], "cols"=>[{"type"=>"string", "id"=>"name", "label"=>"Name"}, {"type"=>"number", "id"=>"years", "label"=>"Years"}, {"type"=>"string", "id"=>"location", "label"=>"Location"}]}}
+
+## Basic ActiveRecord Usage
+If your project includes ActiveRecord, Hotwire will automatically included an extension to itself for processing ActiveRecord collections. This allows you to do something like:
+
+    people = Person.all
+    people.to_wire
+    
+Resulting in:
+
+    {"table"=>{"rows"=>[{"c"=>[{"v"=>"Bob"}, {"v"=>21}, {"v"=>"Baltimore"}]}, {"c"=>[{"v"=>"Fred"}, {"v"=>11}, {"v"=>"Pittsburgh"}]}], "cols"=>[{"type"=>"string", "id"=>"name", "label"=>"Name"}, {"type"=>"number", "id"=>"years", "label"=>"Years"}, {"type"=>"string", "id"=>"location", "label"=>"Location"}]}}
+
+## Advanced Usage ##
+
+Under the hood, Hotwire is designed to be extended in the future to allow for other construction methods and direct data manipulation. I haven't had a need for these features yet, but if you do and are interested in implementing them, please let me know.
+
+## Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+## Copyright
+
+Copyright (c) 2010 Les Freeman. See LICENSE for details.
