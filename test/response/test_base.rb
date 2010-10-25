@@ -29,6 +29,15 @@ class TestResponseBase < Test::Unit::TestCase
         
       end
       
+      context "add_columns" do
+        setup { @response.add_columns([['string', {:id => 'Column A'}], ['number', {:id => 'Column B'}]]) }
+        
+        should "add each column passed in" do
+          expected = [{:type=>"string", :id=>"Column A"}, {:type=>"number", :id=>"Column B"}]
+          assert_equal expected, @response.columns
+        end
+      end
+      
       context "set_data" do
         setup do
           @data = [['a', 'b']]

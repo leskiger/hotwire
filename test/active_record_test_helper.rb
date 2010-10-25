@@ -7,7 +7,9 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string :name
     t.text :bio
     t.integer :age
+    t.decimal :weight
     t.datetime :birth_date
+    t.boolean :tall
   end
 end
 

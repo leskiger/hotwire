@@ -15,6 +15,6 @@ require 'hotwire/response/invalid'
 
 
 
-# if defined? ActiveRecord::Base
-#   require 'hotwire/active_record_mixins.rb'
-# end
+if defined? ActiveRecord::Base
+  require 'hotwire/response/active_record_mixin.rb'
+end
