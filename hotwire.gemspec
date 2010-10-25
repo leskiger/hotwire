@@ -28,18 +28,20 @@ Gem::Specification.new do |s|
      "lib/hotwire/base.rb",
      "lib/hotwire/request.rb",
      "lib/hotwire/response.rb",
+     "lib/hotwire/response/active_record_mixin.rb",
      "lib/hotwire/response/base.rb",
      "lib/hotwire/response/csv.rb",
      "lib/hotwire/response/html.rb",
      "lib/hotwire/response/invalid.rb",
      "lib/hotwire/response/json.rb",
+     "test/active_record_test_helper.rb",
      "test/hotwire_test.rb",
+     "test/response/test_active_record_mixin.rb",
      "test/response/test_base.rb",
      "test/response/test_csv.rb",
      "test/response/test_html.rb",
      "test/response/test_invalid.rb",
      "test/response/test_json.rb",
-     "test/test_active_record_mixins.rb",
      "test/test_helper.rb",
      "test/test_request.rb",
      "test/test_response.rb"
@@ -47,16 +49,17 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/lesfreeman/hotwire}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.6}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{Under the hood data transformations for the Google Wire protocol.}
   s.test_files = [
-    "test/hotwire_test.rb",
+    "test/active_record_test_helper.rb",
+     "test/hotwire_test.rb",
+     "test/response/test_active_record_mixin.rb",
      "test/response/test_base.rb",
      "test/response/test_csv.rb",
      "test/response/test_html.rb",
      "test/response/test_invalid.rb",
      "test/response/test_json.rb",
-     "test/test_active_record_mixins.rb",
      "test/test_helper.rb",
      "test/test_request.rb",
      "test/test_response.rb"
@@ -66,7 +69,7 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<thoughtbot-shoulda>, [">= 0"])
       s.add_development_dependency(%q<redgreen>, [">= 0"])
       s.add_development_dependency(%q<mocha>, [">= 0"])

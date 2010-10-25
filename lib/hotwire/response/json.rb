@@ -59,7 +59,7 @@ module Hotwire
         when "date"
           Hotwire::Response::Json::Date.new(value)
         when "datetime"
-          Hotwire::Response::Json::Datetime.new(value)
+          Hotwire::Response::Json::DateTime.new(value)
         when "timeofday"
           [ value.hour, value.min, value.sec, value.usec / 1000 ]
         end
@@ -86,7 +86,7 @@ module Hotwire
         end
 
         def to_json(options=nil)
-          "new Date(#{@date.year}, #{@date.month-1}, #{@date.day}, #{@date.hour}, #{@date.min}, #{@date.sec})"
+          "new Date(#{@datetime.year}, #{@datetime.month-1}, #{@datetime.day}, #{@datetime.hour}, #{@datetime.min}, #{@datetime.sec})"
         end
       end
 

@@ -33,6 +33,8 @@ module Hotwire
       # Convert an ActiveRecord type string to Wire Protocol types
       def normalize_active_record_type(type)
         case type
+        when :timestamp
+          'datetime'
         when :string, :text
           'string'
         when :decimal, :integer
