@@ -35,7 +35,9 @@ module Hotwire #:nodoc:
       # Parse an ActiveRecord collection into a column headers array
       #
       def columns_from_active_record_collection source
-        source.first.attributes.keys.sort
+        attrs = source.first.attributes.clone
+        attrs.delete('id')
+        attrs.keys.sort
       end
       
       ##
@@ -43,7 +45,9 @@ module Hotwire #:nodoc:
       #
       def rows_from_active_record_collection source
         source.map do |obj| 
-          obj.attributes.sort_by{ |key, val| key }.map do |key, val|
+          attrs = obj.attributes.clone
+          attrs.delete('id')
+          attrs.sort_by{ |key, val| key }.map do |key, val|
             val
           end
         end

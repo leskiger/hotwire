@@ -3,6 +3,7 @@ ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":me
 
 ActiveRecord::Schema.define(:version => 1) do
   create_table :people do |t|
+    t.integer :id
     t.string :name
     t.text :bio
     t.integer :age

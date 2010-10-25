@@ -16,12 +16,10 @@ class TestActiveRecordMixin < Test::Unit::TestCase
         expected = { "table"=> {"rows"=> [{"c"=> [{"v"=>33},
                                                   {"v"=>"A nice Guy"},
                                                   {"v"=>"Date(2010, 9, 19, 9, 38, 10)"},
-                                                  {"v"=>1},#be careful of this id making tests fails
                                                   {"v"=>"Bob"}]}],
                                 "cols"=> [{"type"=>"number", "id"=>"age", "label"=>"Age"},
                                           {"type"=>"string", "id"=>"bio", "label"=>"Bio"},
                                           {"type"=>"datetime", "id"=>"birth_date", "label"=>"Birth date"},
-                                          {"type"=>"number", "id"=>"id", "label"=>"Id"},
                                           {"type"=>"string", "id"=>"name", "label"=>"Name"}]}}    
           
         assert_equal expected, @data.to_wire
@@ -41,12 +39,10 @@ class TestActiveRecordMixin < Test::Unit::TestCase
         expected = { "table"=> {"rows"=> [{"c"=> [{"v"=>33},
                                                   {"v"=>"A nice Guy"},
                                                   {"v"=>"Date(2010, 9, 19, 9, 38, 10)"},
-                                                  {"v"=>2}, #be careful of this id making tests fails
                                                   {"v"=>"Bob"}]}],
                                 "cols"=> [{"type"=>"number", "id"=>"age", "label"=>"Age"},
                                           {"type"=>"string", "id"=>"bio", "label"=>"Bio"},
                                           {"type"=>"datetime", "id"=>"birth_date", "label"=>"Birth date"},
-                                          {"type"=>"number", "id"=>"id", "label"=>"Id"},
                                           {"type"=>"string", "id"=>"name", "label"=>"Name"}]}}    
           
         assert_equal expected, @people.to_wire
