@@ -1,8 +1,20 @@
-require 'hotwire/core_extensions'
-require 'hotwire/column_headers'
-require 'hotwire/row'
-require 'hotwire/table'
-
-if defined? ActiveRecord::Base
-  require 'hotwire/active_record_mixins.rb'
+module Hotwire
+  def self.supported_api_versions
+    ["0.5"]
+  end
 end
+
+require 'hotwire/base'
+require 'hotwire/request'
+require 'hotwire/response'
+require 'hotwire/response/base'
+require 'hotwire/response/csv'
+require 'hotwire/response/json'
+require 'hotwire/response/html'
+require 'hotwire/response/invalid'
+
+
+
+# if defined? ActiveRecord::Base
+#   require 'hotwire/active_record_mixins.rb'
+# end
