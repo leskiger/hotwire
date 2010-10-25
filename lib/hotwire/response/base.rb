@@ -24,7 +24,7 @@ module Hotwire
       # be raised. +params+ is an optional map to define extra column attributes. 
       # These include: +:id+, +:label+ and +:pattern+.
       def add_column(type, params=nil)
-        raise ArgumentError.new("Invalid column type: #{type}") if !@coltypes.include?(type)
+        raise ArgumentError.new("Invalid column type: #{type}(#{type.class.name})") if !@coltypes.include?(type)
         params ||= {}
         params[:type] = type
     
@@ -33,6 +33,12 @@ module Hotwire
         return self
       end
       alias_method :add_col, :add_column
+      
+      # Adds an array of columns to the visualization:
+      # add_columns(['string', {:id => 'Column A'}], ['number', {:id => 'Column B'}])
+      def add_columns(columns)
+        columns.each { |col| add_column(*col)}
+      end
   
       # Sets the data to be exported. +data+ should be a 2-dimensional array. The 
       # first index should iterate over rows, the second over columns. Column 

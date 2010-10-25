@@ -59,6 +59,41 @@ The following is a basic example of use.
         end
     end
 
+## ActiveRecord ##
+
+If your project includes ActiveRecord, Hotwire will automatically included an ActiveRecord mixin that allows columns to be added from a model class.
+
+Let's say you have a Person Model:
+    
+    Class Person < ActiveRecord::Base
+    end
+    
+Then, when you have created your response object, you can add all the columns from the Person Model: 
+
+    ...
+    wire_response.add_columns(Person)
+    ...
+    
+Finally, you can pass a collection of People to set_data:
+
+    ...
+    @people = Personal.find(:all)
+    wire_response.set_data(@people)
+    ...
+    
+You can also set the columns manually and then still use set_data with a collection. This will only set data with columns you have already added, matching the id key of the column definition to the attribute on your objects:
+
+    ...
+    wire_response.add_col('string', :id => 'name' , :label => 'Name').
+                  add_col('number', :id => 'age' , :label => 'Age')
+    wire_response.set_data(Person.all)
+    ...
+    
+In that case, your wire_response.data will look like:
+
+    wire_response.data => [['Bob', 33], ['Fred', 22]]
+                  
+    
 ## ToDo
 TODO: should be updated to handle version 0.6 of the API
 
