@@ -44,15 +44,16 @@ The following is a basic example of use.
             ]
             respond_to do |wants|
                 wants.json do
-                if wire_request = Hotwire::Request.from_param(params)
-                    wire_response = wire_request.build_response
-                    wire_response.add_col('date', :id => 'A' , :label => 'Date').
-                                  add_col('string', :id => 'B' , :label => 'Name').
-                                  add_col('number', :id => 'C', :label => 'Count').
-                                  set_data(data) if wire_req.valid?
-                    wire_request.body
-                else
-                    data.to_json
+                    if wire_request = Hotwire::Request.from_param(params)
+                        wire_response = wire_request.build_response
+                        wire_response.add_col('date', :id => 'A' , :label => 'Date').
+                                      add_col('string', :id => 'B' , :label => 'Name').
+                                      add_col('number', :id => 'C', :label => 'Count').
+                                      set_data(data) if wire_request.valid?
+                        wire_response.body
+                    else
+                        data.to_json
+                    end
                 end
             end
         end
