@@ -59,6 +59,10 @@ The following is a basic example of use.
         end
     end
 
+## Alternate Data Structures ##
+
+The set\_data method on a Hotwire::Response object can be called with several different data structures in order to make getting data into the response as smoothly as possible. See the documentation for Hotwire::Response.set\_data for more details.
+
 ## ActiveRecord ##
 
 If your project includes ActiveRecord, Hotwire will automatically included an ActiveRecord mixin that allows columns to be added from a model class.

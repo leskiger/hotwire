@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Les Freeman"]
-  s.date = %q{2010-10-25}
+  s.date = %q{2010-11-02}
   s.description = %q{Hotwire is designed to ease the pain of creating Google Wire protocol compatible data source in Ruby.}
   s.email = %q{les@codebenders.com}
   s.extra_rdoc_files = [

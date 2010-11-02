@@ -39,14 +39,76 @@ class TestResponseBase < Test::Unit::TestCase
       end
       
       context "set_data" do
-        setup do
-          @data = [['a', 'b']]
-          @response.set_data(@data)
+        context "from an array of hashes" do
+          context "when columns are not set" do
+            setup do
+              @datetime = Time.utc(2010, 11, 2, 9, 35, 00)
+              @data = [{:string_col => 'a1', :int_col => 2, :decimal_col => 3.3, :datetime_col => @datetime}]
+              @response.set_data(@data)
+            end
+            should "add columns to the response" do
+              expected = [{:id => 'string_col', :label => "string_col", :type => 'string'},
+                          {:id => 'int_col', :label => "int_col", :type => 'number'},
+                          {:id => 'decimal_col', :label => "decimal_col", :type => 'number'},
+                          {:id => 'datetime_col', :label => "datetime_col", :type => 'datetime'}]
+              assert_equal expected, @response.columns
+            end
+            should "set the data for the response" do
+              assert_equal [['a1', 2, 3.3, @datetime]], @response.data
+            end
+          end
+          
+          context "when columns are already set" do
+            setup do
+              @data = [{:col_a => 'a1', :col_b => 'b1', :col_c => 'c1'}]
+              @response.add_columns([['string', {:id => 'col_c', :label => 'col_c'}],
+                                     ['string', {:id => 'col_a', :label => 'col_a'}]])
+              @response.set_data(@data)
+            end
+            should "add columns to the response" do
+              expected = [{:id => 'col_c', :label => "col_c", :type => 'string'},
+                          {:id => 'col_a', :label => "col_a", :type => 'string'}]
+              assert_equal expected, @response.columns
+            end
+            should "set the data for the response" do
+              assert_equal [['c1', 'a1']], @response.data
+            end
+          end
         end
         
-        should "set the data for the response" do
-          assert_equal @data, @response.data
+        context "from a :rows, :columns hash" do
+          setup do
+            @datetime = Time.utc(2010, 11, 2, 9, 35, 00)
+            @data = {:columns => ["string_col", "int_col", "decimal_col", "datetime_col"],
+                     :rows => [['a1', 2, 3.3, @datetime]]}
+            @response.set_data(@data)
+          end
+          
+          should "add columns to the response" do
+            expected = [{:id => 'string_col', :label => "string_col", :type => 'string'},
+                        {:id => 'int_col', :label => "int_col", :type => 'number'},
+                        {:id => 'decimal_col', :label => "decimal_col", :type => 'number'},
+                        {:id => 'datetime_col', :label => "datetime_col", :type => 'datetime'}]
+            assert_equal expected, @response.columns
+          end
+          
+          should "set the data from the response" do
+            assert_equal [['a1', 2, 3.3, @datetime]], @response.data
+          end
         end
+        
+        context "from an array of arrays" do
+          setup do
+            @data = [['a', 'b']]
+            @response.set_data(@data)
+          end
+        
+          should "set the data for the response" do
+            assert_equal @data, @response.data
+          end
+        end
+        
+        
       end
       
     end
