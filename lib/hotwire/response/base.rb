@@ -40,7 +40,7 @@ module Hotwire
       #
       # or a sample row of data, represented as a hash keyed as column_name => value:
       #   add_columns({:column_a => 'a1', :column_b => 'b1})
-      # column_name keys are expected to be symbols(string keys do not maintain order).
+      # column_name keys are expected to be strings.
       def add_columns(columns)
         if columns.first.is_a?(Hash)
           add_columns_from_data_hash(columns)
@@ -61,7 +61,7 @@ module Hotwire
       # If passing an array of column_name => value hashes and no columns have been added,
       # a column will automatically be added for each entry in the first row of data.
       # If columns have already been added then the data will be filtered to those
-      # columns. column_name keys are expected to be symbols(string keys do not maintain order).
+      # columns. column_name keys are expected to be strings.
       #
       # If passing a hash with :columns key and a :rows key, 
       # :columns should be an array of column ids: ['col_a', 'col_b'...'col_N']
@@ -87,7 +87,7 @@ module Hotwire
       # Adds columns to the response based on a sample row of data in the form of a hash
       # keyed as column_name => value
       def add_columns_from_data_hash(data)
-        data.first.each do |key, value|
+        data.first.sort.each do |key, value|
           add_column(column_type_for_value(value), :id => key.to_s, :label => key.to_s)
         end
       end
@@ -133,7 +133,7 @@ module Hotwire
       # Data is filtered on the columns that exist.
       def set_data_from_array_of_hashes(data)
         add_columns(data) if columns.empty?
-        set_data(data.map { |row| self.columns.map { |c| row[c[:id].to_sym] } })
+        set_data(data.map { |row| self.columns.map { |c| row[c[:id].to_s] } })
       end
       
       # Sets the response data from a two dimensional array of innumerables.

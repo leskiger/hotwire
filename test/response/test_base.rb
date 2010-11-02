@@ -43,24 +43,24 @@ class TestResponseBase < Test::Unit::TestCase
           context "when columns are not set" do
             setup do
               @datetime = Time.utc(2010, 11, 2, 9, 35, 00)
-              @data = [{:string_col => 'a1', :int_col => 2, :decimal_col => 3.3, :datetime_col => @datetime}]
+              @data = [{'string_col' => 'a1', 'int_col' => 2, 'decimal_col' => 3.3, 'datetime_col' => @datetime}]
               @response.set_data(@data)
             end
             should "add columns to the response" do
-              expected = [{:id => 'string_col', :label => "string_col", :type => 'string'},
-                          {:id => 'int_col', :label => "int_col", :type => 'number'},
+              expected = [{:id => 'datetime_col', :label => "datetime_col", :type => 'datetime'},
                           {:id => 'decimal_col', :label => "decimal_col", :type => 'number'},
-                          {:id => 'datetime_col', :label => "datetime_col", :type => 'datetime'}]
+                          {:id => 'int_col', :label => "int_col", :type => 'number'},
+                          {:id => 'string_col', :label => "string_col", :type => 'string'}]
               assert_equal expected, @response.columns
             end
             should "set the data for the response" do
-              assert_equal [['a1', 2, 3.3, @datetime]], @response.data
+              assert_equal [[@datetime, 3.3, 2, 'a1']], @response.data
             end
           end
           
           context "when columns are already set" do
             setup do
-              @data = [{:col_a => 'a1', :col_b => 'b1', :col_c => 'c1'}]
+              @data = [{'col_a' => 'a1', 'col_b' => 'b1', 'col_c' => 'c1'}]
               @response.add_columns([['string', {:id => 'col_c', :label => 'col_c'}],
                                      ['string', {:id => 'col_a', :label => 'col_a'}]])
               @response.set_data(@data)

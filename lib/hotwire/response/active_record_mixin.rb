@@ -14,7 +14,7 @@ module Hotwire
       end
       
       def set_data_with_active_record_collection(data)
-        data = rows_from_active_record_collection(data) if data.first.is_a?(ActiveRecord::Base)
+        data = rows_from_active_record_collection(data) if data.respond_to?(:first) and data.first.is_a?(ActiveRecord::Base)
         set_data_without_active_record_collection(data)
       end
       
