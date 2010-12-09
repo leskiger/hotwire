@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{hotwire}
-  s.version = "0.1.3"
+  s.version = "0.1.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Les Freeman"]
-  s.date = %q{2010-11-02}
+  s.authors = ["Les Kiger"]
+  s.date = %q{2010-12-09}
   s.description = %q{Hotwire is designed to ease the pain of creating Google Wire protocol compatible data source in Ruby.}
   s.email = %q{les@codebenders.com}
   s.extra_rdoc_files = [
@@ -46,7 +46,7 @@ Gem::Specification.new do |s|
      "test/test_request.rb",
      "test/test_response.rb"
   ]
-  s.homepage = %q{http://github.com/lesfreeman/hotwire}
+  s.homepage = %q{http://github.com/leskiger/hotwire}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
