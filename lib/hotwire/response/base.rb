@@ -39,7 +39,7 @@ module Hotwire
       #   add_columns(['string', {:id => 'Column A'}], ['number', {:id => 'Column B'}])
       #
       # or a sample row of data, represented as a hash keyed as column_name => value:
-      #   add_columns({:column_a => 'a1', :column_b => 'b1})
+      #   add_columns({'column_a' => 'a1', 'column_b' => 'b1})
       # column_name keys are expected to be strings.
       def add_columns(columns)
         if columns.first.is_a?(Hash)

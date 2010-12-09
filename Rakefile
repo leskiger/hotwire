@@ -8,8 +8,8 @@ begin
     gem.summary = %Q{Under the hood data transformations for the Google Wire protocol. }
     gem.description = %Q{Hotwire is designed to ease the pain of creating Google Wire protocol compatible data source in Ruby.}
     gem.email = "les@codebenders.com"
-    gem.homepage = "http://github.com/lesfreeman/hotwire"
-    gem.authors = ["Les Freeman"]
+    gem.homepage = "http://github.com/leskiger/hotwire"
+    gem.authors = ["Les Kiger"]
     # gem.add_dependency "activesupport", ">= 0"
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     gem.add_development_dependency "redgreen", ">= 0"

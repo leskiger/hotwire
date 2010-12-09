@@ -22,9 +22,30 @@ class TestResponseJson < Test::Unit::TestCase
           end
         end
       end
-      
     end
-
   end
   
+  context "a Hotwire::Response::Json::DateTime instance" do
+    context "created with ni" do
+      setup do
+        @datetime = Hotwire::Response::Json::DateTime.new(nil)
+      end
+      
+      should "return a blank string" do
+        assert_equal "", @datetime.to_json
+      end
+    end
+  end
+  
+  context "a Hotwire::Response::Json::Date instance" do
+    context "created with ni" do
+      setup do
+        @date = Hotwire::Response::Json::Date.new(nil)
+      end
+      
+      should "return a blank string" do
+        assert_equal "", @date.to_json
+      end
+    end
+  end
 end

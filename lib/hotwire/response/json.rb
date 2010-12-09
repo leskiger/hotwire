@@ -74,7 +74,7 @@ module Hotwire
         end
 
         def to_json(options=nil)
-          "new Date(#{@date.year}, #{@date.month-1}, #{@date.day})"
+          @date.nil? ? "" : "new Date(#{@date.year}, #{@date.month-1}, #{@date.day})"
         end
       end
 
@@ -86,7 +86,7 @@ module Hotwire
         end
 
         def to_json(options=nil)
-          "new Date(#{@datetime.year}, #{@datetime.month-1}, #{@datetime.day}, #{@datetime.hour}, #{@datetime.min}, #{@datetime.sec})"
+          @datetime.nil? ? "" : "new Date(#{@datetime.year}, #{@datetime.month-1}, #{@datetime.day}, #{@datetime.hour}, #{@datetime.min}, #{@datetime.sec})"
         end
       end
 
